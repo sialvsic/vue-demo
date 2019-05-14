@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
+  <title>Title</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+<div id="root">
+  {{ message }}
+  <p>{{ message }}</p>
+  <input type="text" v-model="name"/>{{name}}
+</div>
+<script>
+  let vm = new Vue({
+    el: '#root',
+    data: {
+      message: '测试',
+      name: 'name',
+    },
+  });
+
+  vm._data.message = '123';
+</script>
+<script>
+  let obj = Object.defineProperty({}, 'name', {
+    configurable: true,
+    enumerable: true,
+    get() {
+      console.log('get');
+      return 'haha';
+    },
+    set(newValue) {
+      console.log(newValue);
+    },
+  });
+
+  console.log(obj);
+</script>
+</body>
+</html>
